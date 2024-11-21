@@ -1,0 +1,49 @@
+# .NET
+bin/
+obj/
+out/
+.vs/
+.vscode/
+.idea/
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+# User-specific files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+# ASP.NET Files
+project.lock.json
+project.fragment.lock.json
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+# ASP.NET 5
+project.json
+# .NET Core SDK
+.vscode/
+.history/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Angular
+node_modules/
+dist/
+tmp/
+*.log
+*.tsbuildinfo
+.angular/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# JetBrains Rider
+.idea/
+# VS Code
+.vscode/
