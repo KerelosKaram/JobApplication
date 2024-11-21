@@ -1,0 +1,286 @@
+<div class="job-application-container my-4">
+  <form [formGroup]="jobApplicationForm" (ngSubmit)="onSubmit()">
+    <h2>Job Application</h2>
+
+    <!-- Position Applied and Full Name -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" formControlName="fullName" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('fullName')?.touched && jobApplicationForm.get('fullName')?.invalid" class="error-message">
+          Full name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="positionApplied">Position Applied</label>
+        <input type="text" id="positionApplied" formControlName="positionApplied" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('positionApplied')?.touched && jobApplicationForm.get('positionApplied')?.invalid" class="error-message">
+          Position applied is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Address and ID No. -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" formControlName="address" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('address')?.touched && jobApplicationForm.get('address')?.invalid" class="error-message">
+          Address is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="idNo">ID No.</label>
+        <input type="text" id="idNo" formControlName="idNo" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('idNo')?.touched && jobApplicationForm.get('idNo')?.invalid" class="error-message">
+          ID No. is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone and Email -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" formControlName="phone" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('phone')?.touched && jobApplicationForm.get('phone')?.invalid" class="error-message">
+          Phone is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('email')?.touched && jobApplicationForm.get('email')?.invalid" class="error-message">
+          Email is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Martial Status and Birthday -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="martialStatus">Martial Status</label>
+        <select id="martialStatus" formControlName="martialStatus" class="form-control">
+          <option *ngFor="let status of martialStatuses" [value]="status">{{ status }}</option>
+        </select>
+        <div *ngIf="jobApplicationForm.get('martialStatus')?.touched && jobApplicationForm.get('martialStatus')?.invalid" class="error-message">
+          Martial Status is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Birthday</label>
+        <input type="date" id="birthDate" formControlName="birthDate" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('birthDate')?.touched && jobApplicationForm.get('birthDate')?.invalid" class="error-message">
+          Birthday is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- University and Military Status -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="militaryStatus">Military Status</label>
+        <select id="militaryStatus" formControlName="militaryStatus" class="form-control">
+          <option *ngFor="let status of militaryStatuses" [value]="status">{{ status }}</option>
+        </select>
+        <div *ngIf="jobApplicationForm.get('militaryStatus')?.touched && jobApplicationForm.get('militaryStatus')?.invalid" class="error-message">
+          Military Status is required.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="university">University</label>
+        <input type="text" id="university" formControlName="university" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('university')?.touched && jobApplicationForm.get('university')?.invalid" class="error-message">
+          University is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Major and Degree -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="degree">Degree</label>
+        <input type="text" id="degree" formControlName="degree" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('degree')?.touched && jobApplicationForm.get('degree')?.invalid" class="error-message">
+          Degree is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="major">Major</label>
+        <input type="text" id="major" formControlName="major" class="form-control" />
+        <div *ngIf="jobApplicationForm.get('major')?.touched && jobApplicationForm.get('major')?.invalid" class="error-message">
+          Major is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Expected Salary and Post-Graduation Studies -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="postGraduationStudies">Post-Graduation Studies</label>
+        <input type="text" id="postGraduationStudies" formControlName="postGraduationStudies" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="expectedSalary">Expected Salary</label>
+        <input type="text" id="expectedSalary" formControlName="expectedSalary" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Courses -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="courses">Courses</label>
+        <input type="text" id="courses" formControlName="courses" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Languages and Expected Start Date -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="languages">Languages</label>
+        <div class="languages-container">
+          <button
+            *ngFor="let language of availableLanguages"
+            type="button"
+            class="language-btn"
+            [class.active]="selectedLanguages.includes(language)"
+            (click)="toggleLanguage(language)"
+          >
+            {{ language }}
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Expected Start Date</label>
+        <input type="date" id="startDate" formControlName="startDate" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Worked here before and Source Of Knowledge About The Company -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="sourceOfKnowledgeAboutTheCompany">Source Of Knowledge About The Company</label>
+        <select id="sourceOfKnowledgeAboutTheCompany" formControlName="sourceOfKnowledgeAboutTheCompany" class="form-control">
+          <option *ngFor="let source of sourceOfKnowledgeAboutTheCompany" [value]="source">{{ source }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="workedHereBefore">If worked here before, Mention the job position</label>
+        <input type="text" id="workedHereBefore" formControlName="workedHereBefore" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Chronic Diseases and Relatives Working Here -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="chronicDiseases">Do you have any chronic diseases? If yes, please specify</label>
+        <input type="text" id="chronicDiseases" formControlName="chronicDiseases" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="relativesWorkingInTheCompany">Do you have relatives working here? Mention their position</label>
+        <input type="text" id="relativesWorkingInTheCompany" formControlName="relativesWorkingInTheCompany" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div formArrayName="workExperiences" class="work-experience-section">
+      <h3>Work Experience</h3>
+      <div *ngFor="let experience of workExperiences.controls; let i = index" [formGroupName]="i" class="work-experience">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" formControlName="company" class="form-control" />
+            <div *ngIf="experience.get('company')?.touched && experience.get('company')?.invalid" class="error-message">
+              Company is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" id="position" formControlName="position" class="form-control" />
+            <div *ngIf="experience.get('position')?.touched && experience.get('position')?.invalid" class="error-message">
+              Position is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="text" id="salary" formControlName="salary" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="reasonForLeaving">Reason for Leaving</label>
+            <input type="text" id="reasonForLeaving" formControlName="reasonForLeaving" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" formControlName="startDate" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input
+              type="date"
+              id="endDate"
+              formControlName="endDate"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="currentEmployer">Current Employer</label>
+            <button
+              type="button"
+              class="current-employer-btn"
+              [class.active]="currentEmployerIndex === i"
+              (click)="toggleCurrentEmployer(i)"
+            >
+              Currently Employed
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-danger" (click)="removeExperience(i)">Remove Experience</button>
+      </div>
+    </div>
+
+    <!-- Add Experience Button -->
+    <button type="button" class="btn btn-primary" (click)="addExperience()">Add Experience</button>
+
+    <div></div>
+
+    <!-- CV Upload -->
+    <div class="form-row mt-4">
+      <div class="form-group">
+        <label for="cvUpload">Upload CV</label>
+        <input
+          type="file"
+          id="cvUpload"
+          class="form-control"
+          (change)="onCVUpload($event)"
+        />
+        <small class="text-danger" *ngIf="cvError">{{ cvError }}</small>
+        <small class="text-success" *ngIf="uploadedFileName">Uploaded file: {{ uploadedFileName }}</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-4 submit-btn" [disabled]="jobApplicationForm.invalid || cvError !== null || uploadedCV == null">Submit Application</button>
+  </form>
+</div>

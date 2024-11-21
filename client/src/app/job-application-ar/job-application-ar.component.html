@@ -1,0 +1,263 @@
+<div class="job-application-container my-4">
+    <form [formGroup]="jobApplicationFormAr" (ngSubmit)="onSubmit()">
+      <h2>طلب وظيفة</h2>
+  
+      <!-- Position Applied and Full Name -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="positionApplied">الوظيفة المتقدم لها</label>
+          <input type="text" id="positionApplied" formControlName="positionApplied" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('positionApplied')?.touched && jobApplicationFormAr.get('positionApplied')?.invalid" class="error-message">
+            .الوظيفة المتقدم لها مطلوبة
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="fullName">الاسم الكامل</label>
+          <input type="text" id="fullName" formControlName="fullName" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('fullName')?.touched && jobApplicationFormAr.get('fullName')?.invalid" class="error-message">
+            .الاسم الكامل مطلوب
+          </div>
+        </div>
+      </div>
+  
+      <!-- Address and ID No. -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="address">العنوان</label>
+          <input type="text" id="address" formControlName="address" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('address')?.touched && jobApplicationFormAr.get('address')?.invalid" class="error-message">
+            .العنوان مطلوب
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="idNo">رقم البطاقة</label>
+          <input type="text" id="idNo" formControlName="idNo" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('idNo')?.touched && jobApplicationFormAr.get('idNo')?.invalid" class="error-message">
+            .رقم البطاقة مطلوب
+          </div>
+        </div>
+      </div>
+  
+      <!-- Phone and Email -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">الهاتف</label>
+          <input type="text" id="phone" formControlName="phone" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('phone')?.touched && jobApplicationFormAr.get('phone')?.invalid" class="error-message">
+            .الهاتف مطلوب
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" formControlName="email" class="form-control" />
+        </div>
+      </div>
+    
+      <!-- Major and Degree -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="major">التخصص</label>
+          <input type="text" id="major" formControlName="major" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('major')?.touched && jobApplicationFormAr.get('major')?.invalid" class="error-message">
+            .التخصص مطلوب
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="degree">الدرجة العلمية</label>
+          <input type="text" id="degree" formControlName="degree" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('degree')?.touched && jobApplicationFormAr.get('degree')?.invalid" class="error-message">
+            .الدرجة العلمية مطلوب
+          </div>
+        </div>
+      </div>
+
+      <!-- Courses -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="courses">الدورات التدريبية</label>
+          <input type="text" id="courses" formControlName="courses" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="martialStatus">الحالة الإجتماعية</label>
+          <select id="martialStatus" formControlName="martialStatus" class="form-control">
+            <option *ngFor="let status of martialStatuses" [value]="status">{{ status }}</option>
+          </select>
+          <div *ngIf="jobApplicationFormAr.get('martialStatus')?.touched && jobApplicationFormAr.get('martialStatus')?.invalid" class="error-message">
+            .الحالة الإجتماعية مطلوب
+          </div>
+        </div>
+      </div>
+  
+      <!-- Expected Salary and Military Status -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="expectedSalary">الراتب المتوقع</label>
+          <input type="text" id="expectedSalary" formControlName="expectedSalary" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="militaryStatus">الحالة العسكرية</label>
+          <select id="militaryStatus" formControlName="militaryStatus" class="form-control">
+            <option *ngFor="let status of militaryStatuses" [value]="status">{{ status }}</option>
+          </select>
+          <div *ngIf="jobApplicationFormAr.get('militaryStatus')?.touched && jobApplicationFormAr.get('militaryStatus')?.invalid" class="error-message">
+            .الحالة العسكرية مطلوب
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Driver License and Birthdate-->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="driverLicense">رخصة قيادة</label>
+          <select id="driverLicense" formControlName="driverLicense" class="form-control">
+            <option *ngFor="let license of driverLicenses" [value]="license">{{ license }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">تاريخ الميلاد</label>
+          <input type="date" id="birthDate" formControlName="birthDate" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('birthDate')?.touched && jobApplicationFormAr.get('birthDate')?.invalid" class="error-message">
+            .تاريخ الميلاد مطلوب
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages and Start Date -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="languages">اللغات</label>
+          <div class="languages-container">
+            <button
+              *ngFor="let language of availableLanguages"
+              type="button"
+              class="language-btn"
+              [class.active]="selectedLanguages.includes(language)"
+              (click)="toggleLanguage(language)"
+            >
+              {{ language }}
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="startDate">تاريخ البدء المتوقع</label>
+          <input type="date" id="startDate" formControlName="startDate" class="form-control" />
+          <div *ngIf="jobApplicationFormAr.get('startDate')?.touched && jobApplicationFormAr.get('startDate')?.invalid" class="error-message">
+            .تاريخ البدء المتوقع مطلوب
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Source Of Knowledge About The Company And Worked Here Before--> 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sourceOfKnowledgeAboutTheCompany">مصدر المعرفة بالشركة</label>
+          <select id="sourceOfKnowledgeAboutTheCompany" formControlName="sourceOfKnowledgeAboutTheCompany" class="form-control">
+            <option *ngFor="let source of sourceOfKnowledgeAboutTheCompany" [value]="source">{{ source }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="workedHereBefore">اذا كنت تعمل لدينا من قبل اذكر الوظيفة</label>
+          <input type="text" id="workedHereBefore" formControlName="workedHereBefore" class="form-control" />
+        </div>  
+      </div>
+
+      <!-- Chronic Diseases And Relatives Working In The Company--> 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="chronicDiseases">اذا كانت لديك أي امراض مزمنة اذكرها</label>
+          <input type="text" id="chronicDiseases" formControlName="chronicDiseases" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="relativesWorkingInTheCompany">اذا كان لديك اقارب في الشركة اذكرهم مع ذكر الوظيفة</label>
+          <input type="text" id="relativesWorkingInTheCompany" formControlName="relativesWorkingInTheCompany" class="form-control" />
+        </div>
+      </div>
+        
+  
+      <!-- Work Experience Section -->
+      <div formArrayName="workExperiences" class="work-experience-section">
+        <h3 class="RightToLeft">الخبرات العملية</h3>
+        <div *ngFor="let experience of workExperiences.controls; let i = index" [formGroupName]="i" class="work-experience">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">الشركة</label>
+              <input type="text" id="company" formControlName="company" class="form-control" />
+              <div *ngIf="experience.get('company')?.touched && experience.get('company')?.invalid" class="error-message">
+                الشركة مطلوبة.
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="position">المسمى الوظيفي</label>
+              <input type="text" id="position" formControlName="position" class="form-control" />
+              <div *ngIf="experience.get('position')?.touched && experience.get('position')?.invalid" class="error-message">
+                المسمى الوظيفي مطلوب.
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group">
+              <label for="endDate">تاريخ الانتهاء</label>
+              <input
+                type="date"
+                id="endDate"
+                formControlName="endDate"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="startDate">تاريخ البداية</label>
+              <input type="date" id="startDate" formControlName="startDate" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="salary">الراتب</label>
+              <input type="text" id="salary" formControlName="salary" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="reasonForLeaving">سبب المغادرة</label>
+              <input type="text" id="reasonForLeaving" formControlName="reasonForLeaving" class="form-control" />
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group">
+              <label for="currentEmployer">موظف الحالي</label>
+              <button
+                type="button"
+                class="current-employer-btn"
+                [class.active]="currentEmployerIndex === i"
+                (click)="toggleCurrentEmployer(i)"
+              >
+                موظف حالي
+              </button>
+            </div>
+          </div>
+  
+          <button type="button" class="btn btn-danger" (click)="removeExperience(i)">حذف الخبرة</button>
+        </div>
+      </div>
+  
+      <!-- Add Experience Button -->
+      <button type="button" class="btn btn-primary" (click)="addExperience()">إضافة خبرة</button>
+      <div></div>
+      <button type="submit" class="btn btn-success mt-4 submit-btn" [disabled]="jobApplicationFormAr.invalid">إرسال الطلب</button>
+    </form>
+</div>
+  
